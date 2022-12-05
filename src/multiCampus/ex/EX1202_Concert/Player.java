@@ -1,11 +1,11 @@
 package multiCampus.ex.EX1202_Concert;
 
-public class EX120207 {
+public class Player {
 
     //객체는 자율성을 지녀야 한다.
     private String instrument;
 
-    public EX120207 (String instrument) {
+    public Player(String instrument) {
         this.instrument = instrument;
     }
 
