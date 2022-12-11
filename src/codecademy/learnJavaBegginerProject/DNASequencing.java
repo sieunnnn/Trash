@@ -17,44 +17,50 @@ public class DNASequencing {
         dnaArray(str);
 
     }
-    static void dnaArray(String[] str) {
 
-        String dna = null;
+    static void dnaArray(String[] str) {
         for (int i = 0; i < str.length; i++) {
-            dna = str[i];
-            result(dna);
+            result(str[i]);
         }
     }
 
-    public static boolean result (String dna) {
-
-        System.out.println("============================");
-        System.out.println("\nLet's start DNA sequencing");
-
-        System.out.println("\nLength: " + dna.length());
+    public static void result (String dna) {
 
         int start = dna.indexOf("ATG");
-        System.out.println("Start: " + start);
-
         int stop = dna.indexOf("TGA");
-        System.out.println("Stop: " + stop + "\n");
+
+        String type = "NONE";
+        String protein = "";
 
         if (start != -1 && stop != -1 && (stop - start) % 3 == 0) {
-
-            System.out.println("Condition 1 and 2 and 3 are satisfied.");
-            String protein = dna.substring(start, stop+3);
-
-            System.out.println("\nDNA contains a protein!\n");
-            System.out.println(" * Protein: " + protein + "\n");
-
-            return true;
+            protein = dna.substring(start, stop+3);
+            type = "Protein";
 
         } else if (start != -1 && stop != -1) {
+            type = "NotProtein";
 
-            System.out.println("Condition 1 and 2 are satisfied");
-            System.out.println("\nDAN doesn't contain a protein!\n");
         }
+        printResult(dna.length(), start, stop, protein, type);
 
-        return false;
+    }
+
+    public static void printResult (int length, int start, int stop, String protein, String type) {
+        StringBuilder sb = new StringBuilder(
+            "============================" +
+            "\n\nLet's start DNA sequencing" +
+            "\n\nLength: " + length +
+            "\nStart: " + start +
+            "\nStop: " + stop + "\n"
+        );
+        if ("Protein".equals(type)) {
+            sb.append("\nCondition 1 and 2 and 3 are satisfied.")
+                .append("\nDNA contains a protein!\n")
+                .append(" * Protein: ")
+                .append(protein)
+                .append("\n");
+        } else if ("NotProtein".equals(type)) {
+            sb.append("\nCondition 1 and 2 are satisfied \nDAN doesn't contain a protein!\n");
+        }
+        System.out.println(sb);
     }
 }
