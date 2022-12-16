@@ -10,7 +10,9 @@
 
 <br>
 diagram 만 봤을 때는 모르겠지만, 소스코드가 상속 예제와 달라졌다.
+<br>
 상속 예제 코드를 보고싶다면 아래 링크를 클릭!
 <br>
-
-[:octocat: 상속 예제 코드와 다이어그램](https://github.com/sieunnnn/Java/tree/main/src/multiCampus/objectOrientation/encapsulation/inheritance)
+<br>
+  
+  ![:octocat: 상속 예제 코드와 다이어그램](https://github.com/sieunnnn/Java/tree/main/src/multiCampus/objectOrientation/encapsulation/inheritance)
