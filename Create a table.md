@@ -4,6 +4,7 @@
 
 > Create a table practice
   
+<br>
 
 | id | name | birthday | email | instagram |
 | :--- | :--- | :--- | :--- | :--- |
