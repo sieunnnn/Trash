@@ -6,4 +6,4 @@
 <br>
 <br>
 
-<img src="C:\Users\시은\Desktop\GitHub\Java\src\multiCampus\objectOrientation\encapsulation\inheritance\inheritance ex diagram.png">
+<img src="https://github.com/sieunnnn/Java/blob/main/src/multiCampus/objectOrientation/encapsulation/inheritance/inheritance%20ex%20diagram.png?raw=true">
