@@ -1,4 +1,4 @@
-package src.multiCampus.abstract_;
+package src.multiCampus.objectOrientation.abstract_;
 
 /*
 추상 클래스

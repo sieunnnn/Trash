@@ -1,4 +1,4 @@
-package src.multiCampus.abstract_;
+package src.multiCampus.objectOrientation.abstract_;
 
 public class Run {
     public static void main(String[] args) {
