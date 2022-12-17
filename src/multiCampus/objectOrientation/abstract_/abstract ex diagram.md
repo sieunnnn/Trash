@@ -6,6 +6,6 @@
 <br>
 <br>
 
-<img src="https://github.com/sieunnnn/Java/blob/main/src/multiCampus/abstract_/abstract%20ex%20diagram.png?raw=true">
+<img src="https://github.com/sieunnnn/Java/blob/main/src/multiCampus/objectOrientation/abstract_/abstract%20ex%20diagram.png?raw=true">
 
 
