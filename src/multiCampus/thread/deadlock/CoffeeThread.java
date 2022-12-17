@@ -4,7 +4,7 @@ public class CoffeeThread implements Runnable{
 
     private Bottle bottle;
 
-    public CoffeeThread(Bottle bottle) {
+    public CoffeeThread(School school, Bottle bottle) {
         super();
         this.bottle = bottle;
     }

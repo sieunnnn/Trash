@@ -1,7 +1,7 @@
 package src.multiCampus.thread.deadlock;
 
 public class School {
-    private Home home;
+    private static Home home;
 
     public School() {
         // TODO Auto-generated constructor stub
@@ -16,7 +16,7 @@ public class School {
         System.out.println(name + " 학교로 가는 중...");
     }
 
-    public synchronized void leaveSchool(String name) {
+    public static synchronized void leaveSchool(String name) {
         System.out.println(name + " 학교를 떠나 집으로 갑니다.");
         home.goToHome(name);
     }
