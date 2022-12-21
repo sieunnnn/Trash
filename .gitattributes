@@ -1,2 +1,1 @@
-* linguist-vendored
-*.sql linguist-vendered=false
+sql/**/*.sql linguist-detectable=true
