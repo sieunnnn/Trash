@@ -42,7 +42,7 @@ FROM employee;
 #    연봉의 별칭은, [연봉] 보너스를 포함한 연봉의 별칭인 [총 연봉] 으로 합니다.
 #    * 총 연봉에 NULL 이 나오는 것은 신경쓰지 마세요.
 SELECT 	EMP_NAME, SALARY * 12 AS '[연봉]', 
-		SALARY * 12 * (1 + BONUS) AS '[총 연봉]'
+	SALARY * 12 * (1 + BONUS) AS '[총 연봉]'
 FROM employee
 WHERE DEPT_CODE = 'D5' AND SALARY >= 3000000;
 
