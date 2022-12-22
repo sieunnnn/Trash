@@ -72,7 +72,7 @@ GROUP BY DEPT_ID, DEPT_TITLE ;
 # employee 테이블에서 이름, 부서코드, 관리자 사번, 관리자 이름을 출력하세요.
 SELECT E.EMP_NAME, DEPT_CODE, MANAGER_ID,
 	(SELECT EMP_NAME 
-		FROM employee 
+	FROM employee 
         WHERE EMP_ID = E.MANAGER_ID)
 FROM employee E;
 
