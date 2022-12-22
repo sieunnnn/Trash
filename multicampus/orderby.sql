@@ -20,3 +20,18 @@ ORDER BY SAL_LEVEL ASC, SALARY DESC;
 SELECT EMP_NAME, SALARY, BONUS, SAL_LEVEL, DEPT_CODE
 FROM employee
 ORDER BY BONUS IS NULL ASC, BONUS ASC;
+
+
+# TOP N 구문
+# employee 테이블에서 급여 순위 1 - 5 등을 뽑아보자
+SELECT EMP_NAME, SALARY
+FROM employee
+ORDER BY SALARY DESC
+LIMIT 5 ; # 0, 5 를 말한다. 앞은 인덱스 번호 이고 뒤는 출력 개수이다.
+
+
+#employee 테이블에서 급여 순위 6 -10 등을 뽑아보자
+SELECT EMP_NAME, SALARY
+FROM employee
+ORDER BY SALARY DESC
+LIMIT 5 , 5;
