@@ -71,8 +71,43 @@ FROM employee;
 
 
 # 부서에서 가장 어린 사원의 사원ID, 이름, 나이, 부서명, 직급명을 출력하세요
-
-
+-- 가장 어린 나이 뽑아내기
+WITH MIN_AGE AS ( -- 23
+		SELECT
+			SUBSTRING(EMP_NO, 1, 2) AS AGE
+		FROM EMPLOYEE
+        ORDER BY SUBSTRING(EMP_NO, 1, 2) DESC
+        LIMIT 1
+	)
+    SELECT -- 아래와 같이 써주는게 매너이다. AS 뒤에는 컬럼명을 써주면 나중에 멀티커서로 지정하기 편하다.
+		E.EMP_ID AS EMP_ID
+        , E.EMP_NAME AS EMP_NAME
+        , E.EMP_NO AS EMP_NO
+        , D.DEPT_TITLE AS DEPT_TITLE
+        , J.JOB_NAME AS JOB_NAME
+        , (
+			CASE
+				WHEN SUBSTR(EMP_NO,8,1) IN (1, 2)  -- 주민번호 뒷번호가 1,2 이면 1900년대생
+					THEN YEAR(NOW()) - (1900 + SUBSTR(EMP_NO,1,2))
+				ELSE YEAR(NOW()) - (2000 + SUBSTR(EMP_NO,1,2))
+			END 
+        )  + 1 AS AGE -- 만나이가 아니므로 1을 더해준다
+	FROM (
+		SELECT
+			* -- 운영중인 시스템 중 특정 테이블의 특정 컬럼의 VARCHAR(35) => VARCHAR(100) (ALTER TABLE ALTER COLUMN SET VARCHAR(100)) 인식못함 최대한 쓰지말자!
+        FROM EMPLOYEE
+        WHERE 1 = 1 -- 항상 TRUE 이므로 이렇게 두고 아래에 원하는 조건을 두는게 좋다. (나중에 수정하기 편함)
+			AND SUBSTRING(EMP_NO, 1, 2) = (
+				SELECT AGE 
+                FROM MIN_AGE
+            )
+    ) E
+		INNER JOIN DEPARTMENT D -- JOIN 의 DEFAULT 값은 INNER JOIN  이지만 협업시에는 써주는게 매너이다.
+			ON E.DEPT_CODE = D.DEPT_ID
+		INNER JOIN JOB J
+			ON E.JOB_CODE = J.JOB_CODE;
+ 
+ 
 # 보너스를 받은 사원의 사원명, 보너스, 부서명, 지역명을 출력하세요
 SELECT EMP_NAME, BONUS, DEPT_TITLE, LOCAL_NAME
 FROM employee
