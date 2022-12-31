@@ -46,5 +46,5 @@ def lots_of_math(a, b, c, d):
     print(third_result)
     return fourth_result
 
-print(lots_of_math(1, 2, 3, 4))
-print(lots_of_math(1, 1, 1, 1))
+# print(lots_of_math(1, 2, 3, 4))
+# print(lots_of_math(1, 1, 1, 1))
