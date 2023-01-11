@@ -14,13 +14,10 @@ clock = pygame.time.Clock()
 # 화면 타이틀 설정
 pygame.display.set_caption("보글보글보글")
 
-current_path = os.path.dirname(__file__)  # 현재 파일의 위치 반환
-image_path = os.path.join(current_path, "resource")
-
 # 캐릭터 만들기
-character_default = pygame.image.load(os.path.join(image_path, "right.png"))
-character_left = pygame.image.load(os.path.join(image_path, "left.png"))
-character_attack = pygame.image.load(os.path.join(image_path, "attack.png"))
+character_default = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/right.png")
+character_left = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/left.png")
+character_attack = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/attack.png")
 
 character = character_default
 character_size = character.get_rect().size
@@ -36,7 +33,7 @@ character_to_x = 0
 character_speed = 5
 
 # 무기 만들기
-weapon = pygame.image.load(os.path.join(image_path, "weapon.png"))
+weapon = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/weapon.png")
 weapon_size = weapon.get_rect().size
 weapon_width = weapon_size[0]
 
@@ -48,13 +45,13 @@ weapon_speed = 10
 
 # 공 만들기 (4개 크기에 대해 따로 처리)
 
-enemy_right = pygame.image.load(os.path.join(image_path, "enemy_right.png"))
-bubble_2 = pygame.image.load(os.path.join(image_path, "bubble2.png"))
+enemy_right = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/enemy_right.png")
+bubble_2 = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble2.png")
 
 ball_images = [
-    pygame.image.load(os.path.join(image_path, "bubble2.png")),
-    pygame.image.load(os.path.join(image_path, "bubble3.png")),
-    pygame.image.load(os.path.join(image_path, "bubble4.png"))
+    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble2.png"),
+    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble3.png"),
+    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble4.png")
     ]
 
 # 공 크기에 따른 최초 스피드
@@ -91,7 +88,7 @@ game_result = "Game Over"
 
 
 # 배경 만들기
-background = pygame.image.load(os.path.join(image_path, "background.png"))
+background = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/background.png")
 
 running = True
 while running:
