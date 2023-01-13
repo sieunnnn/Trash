@@ -9,7 +9,7 @@ for i in range(9):
 
 row_index = 0
 col_index = 0
-max = 0
+max = -1
 
 for i in range(9):
     for j in range(9):
