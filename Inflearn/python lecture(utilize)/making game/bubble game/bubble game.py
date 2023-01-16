@@ -15,9 +15,9 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("보글보글보글")
 
 # 캐릭터 만들기
-character_default = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/right.png")
-character_left = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/left.png")
-character_attack = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/attack.png")
+character_default = pygame.image.load("./resource/right.png")
+character_left = pygame.image.load("./resource/left.png")
+character_attack = pygame.image.load("./resource/attack.png")
 
 character = character_default
 character_size = character.get_rect().size
@@ -33,7 +33,7 @@ character_to_x = 0
 character_speed = 5
 
 # 무기 만들기
-weapon = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/weapon.png")
+weapon = pygame.image.load("./resource/weapon.png")
 weapon_size = weapon.get_rect().size
 weapon_width = weapon_size[0]
 
@@ -45,13 +45,13 @@ weapon_speed = 10
 
 # 공 만들기 (4개 크기에 대해 따로 처리)
 
-enemy_right = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/enemy_right.png")
-bubble_2 = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble2.png")
+enemy_right = pygame.image.load("./resource/enemy_right.png")
+bubble_2 = pygame.image.load("./resource/bubble2.png")
 
 ball_images = [
-    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble2.png"),
-    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble3.png"),
-    pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/bubble4.png")
+    pygame.image.load("./resource/bubble2.png"),
+    pygame.image.load("./resource/bubble3.png"),
+    pygame.image.load("./resource/bubble4.png")
     ]
 
 # 공 크기에 따른 최초 스피드
@@ -77,7 +77,7 @@ weapon_to_remove = -1
 ball_to_remove = -1
 
 # font 정의
-game_font = pygame.font.Font("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/DePixelBreitFett.ttf", 20)
+game_font = pygame.font.Font("./resource/DePixelBreitFett.ttf", 20)
 total_time = 100
 
 # 시작 시간 정의
@@ -88,7 +88,7 @@ game_result = "Game Over"
 
 
 # 배경 만들기
-background = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bubble game/resource/background.png")
+background = pygame.image.load("./resource/background.png")
 
 running = True
 while running:
