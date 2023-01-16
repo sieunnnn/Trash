@@ -17,17 +17,17 @@ clock = pygame.time.Clock()
 
 # 배경 이미지 불러오기
 background = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/background.png")
+    "./resource/background.png")
 
 # 스프라이트(캐릭터) 불러오기
 character_default = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/default.png")
+    "./resource/default.png")
 character_left = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/left.png")
+    "./resource/left.png")
 character_right = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/right.png")
+    "./resource/right.png")
 character_gameover = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/gameover.png")
+    "./resource/gameover.png")
 
 character = character_default
 
@@ -46,9 +46,9 @@ to_y = 0
 character_speed = 0.6
 
 # 폭탄 캐릭터
-bomb_default = pygame.image.load("C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/bomb.png")
+bomb_default = pygame.image.load("./resource/bomb.png")
 bomb_explosion = pygame.image.load(
-    "C:/Users/시은/Desktop/GitHub/Python/Inflearn/python lecture(utilize)/making game/bomb game/resource/explosion.png")
+    "./resource/explosion.png")
 
 
 bomb = bomb_default
