@@ -62,7 +62,14 @@ public class CodeGroupController {
 
     // 수정 처리
     @PostMapping(value = "/modify")
-    public String modify(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception {
+    // 유효성 검증 처리
+    public String modify(@Validated CodeGroup codeGroup, BindingResult result, RedirectAttributes rttr) throws Exception {
+
+        // 수정 처리시 유효성 검증 에러가 발생하면 수정화면으로 forwarding
+        if(result.hasErrors()) {
+            return "codegroup/modify";
+        }
+
         service.modify(codeGroup);
         rttr.addFlashAttribute("msg", "SUCCESS");
 

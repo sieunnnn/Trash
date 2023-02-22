@@ -19,13 +19,19 @@
                 <tr>
                     <td th:text="#{codeGroup.groupCode}">코드 그룹 코드</td>
                     <td><input type="text" name="groupCode" th:field="*{groupCode}" /></td>
-                    <td></td>
+                    <!-- 입력값 유효성 검증 에러 표시 -->
+                    <td>
+                        <span class="error_message" th:if="${#fields.hasErrors('groupCode')}" th:errors="*{groupCode}">groupCode 의 에러 메시지</span>
+                    </td>
                 </tr>
 
                 <tr>
                     <td th:text="#{codeGroup.groupName}">코드 그룹 명</td>
                     <td><input type="text" name="groupName" th:field="*{groupName}" /></td>
-                    <td></td>
+                    <!-- 입력값 유효성 검증 에러 표시 -->
+                    <td>
+                        <span class="error_message" th:if="${#fields.hasErrors('groupName')}" th:errors="*{groupName}">groupName 의 에러 메시지</span>
+                    </td>
                 </tr>
             </table>
         </form>
