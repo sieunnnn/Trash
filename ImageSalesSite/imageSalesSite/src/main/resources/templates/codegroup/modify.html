@@ -27,7 +27,9 @@
 
                 <tr>
                     <td th:text="#{codeGroup.groupName}">코드 그룹 명</td>
-                    <td><input type="text" name="groupName" th:field="*{groupName}" /></td>
+                    <td>
+                        <input type="text" name="groupName" th:field="*{groupName}" />
+                    </td>
                     <!-- 입력값 유효성 검증 에러 표시 -->
                     <td>
                         <span class="error_message" th:if="${#fields.hasErrors('groupName')}" th:errors="*{groupName}">groupName 의 에러 메시지</span>

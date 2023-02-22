@@ -1,32 +1,40 @@
 package com.example.imageSalesSite.domain;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
-@ToString(exclude = "codeDetails")
+@ToString
+@EqualsAndHashCode(of = {"groupCode", "codeValue"})
 @Entity
-@EqualsAndHashCode(of = "groupCode")
-@Table(name="code_group")
-public class CodeGroup {
+@IdClass(CodeDetailld.class)
+@Table(name = "code_detail")
+public class CodeDetail {
 
-    // 유효성 검증 annotation 지정
     @NotBlank
     @Id
     @Column(length = 3)
     private String groupCode;
 
-    // 유효성 검증 annotation 지정
+    @NotBlank
+    @Id
+    @Column(length = 3)
+    private String codeValue;
+
     @NotBlank
     @Column(length = 30, nullable = false)
-    private String groupName;
+    private String codeName;
+
+    private int sortSeq;
 
     @Column(length = 1)
     private String useYn = "Y";
@@ -35,9 +43,4 @@ public class CodeGroup {
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
-
-    // CodeDetail 과 연관관계 매핑
-    @OneToMany
-    @JoinColumn(name = "groupCode")
-    private List<CodeDetail> codeDetails;
 }

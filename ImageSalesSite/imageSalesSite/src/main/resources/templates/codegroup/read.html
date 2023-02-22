@@ -50,7 +50,7 @@
                     self.location = "modify?groupCode=" + groupCodeVal;
                 });
 
-                $("btnRemove").on("click", function () {
+                $("#btnRemove").on("click", function () {
                     formObj.attr("action", "/codegroup/remove");
                     formObj.submit();
                 });
