@@ -9,4 +9,7 @@ public interface MemberService {
 
     // 최초 관리자 생성을 위한 데이터를 등록한다.
     public void setupAdmin(Member member) throws Exception;
+
+    // 등록 처리
+    public void register(Member member) throws Exception;
 }

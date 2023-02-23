@@ -35,4 +35,24 @@ public class MemberServiceImpl implements MemberService{
 
         repository.save(memberEntity);
     }
+
+    // 등록 처리
+    @Override
+    public void register(Member member) throws Exception {
+        Member memberEntity = new Member();
+        memberEntity.setUserId(member.getUserId());
+        memberEntity.setUserPw(member.getUserPw());
+        memberEntity.setUserName(member.getUserName());
+        memberEntity.setJob(member.getJob());
+
+        // 회원 권한 생성
+        MemberAuth memberAuth = new MemberAuth();
+        memberAuth.setAuth("ROLE_MEMBER");
+
+        memberEntity.addAuth(memberAuth);
+
+        repository.save(memberEntity);
+
+    }
+
 }
