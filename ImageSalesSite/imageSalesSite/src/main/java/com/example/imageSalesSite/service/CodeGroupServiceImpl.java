@@ -29,13 +29,13 @@ public class CodeGroupServiceImpl implements CodeGroupService{
     // 상세 화면
     @Override
     public CodeGroup read(String groupCode) throws Exception {
-        return repository.getReferenceById(groupCode);
+        return repository.getById(groupCode);
     }
 
     // 수정 처리
     @Override
     public void modify(CodeGroup codeGroup) throws Exception {
-        CodeGroup codeGroupEntity = repository.getReferenceById(codeGroup.getGroupCode());
+        CodeGroup codeGroupEntity = repository.getById(codeGroup.getGroupCode());
 
         codeGroupEntity.setGroupName(codeGroup.getGroupName());
         repository.save(codeGroupEntity);

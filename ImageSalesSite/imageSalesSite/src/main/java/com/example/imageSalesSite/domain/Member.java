@@ -1,6 +1,6 @@
 package com.example.imageSalesSite.domain;
 
-import groovy.transform.EqualsAndHashCode;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -49,7 +49,7 @@ public class Member {
     private LocalDateTime updDate;
 
     // CodeDetail 과 연관관계 매핑
-    @OneToMany(cascade = CascadeType.ALL, fatch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
 

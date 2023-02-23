@@ -49,7 +49,7 @@ public class CodeDetailServiceImpl implements CodeDetailService{
         codeDetailld.setGroupCode(codeDetail.getGroupCode());
         codeDetailld.setCodeValue(codeDetail.getCodeValue());
 
-        return repository.getReferenceById(codeDetailld);
+        return repository.getById(codeDetailld);
     }
 
     // 수정 처리
@@ -60,7 +60,7 @@ public class CodeDetailServiceImpl implements CodeDetailService{
         codeDetailld.setGroupCode(codeDetail.getGroupCode());
         codeDetailld.setCodeValue(codeDetail.getCodeValue());
 
-        CodeDetail codeDetailEntity = repository.getReferenceById(codeDetailld);
+        CodeDetail codeDetailEntity = repository.getById(codeDetailld);
 
         codeDetailEntity.setCodeValue(codeDetail.getCodeValue());
         codeDetailEntity.setCodeName(codeDetail.getCodeName());
