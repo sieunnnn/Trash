@@ -20,6 +20,9 @@
                     <!-- 관리자 권한을 가진 사용자인 경우 true -->
                     <th:block sec:authorize="hasRole('ADMIN')">
                         <td width="120">
+                            <a href="../board/list.html" th:href="@{/board/list}" th:text="#{menu.board.member}">회원 게시판</a>
+                        </td>
+                        <td width="120">
                             <a href="../codegroup/list.html" th:href="@{/codegroup/list}" th:text="#{menu.codeGroup.list}">코드 그룹 관리</a>
                         </td>
                         <td width="120">
@@ -28,11 +31,16 @@
                         <td width="120">
                             <a href="../user/list.html" th:href="@{/user/list}" th:text="#{menu.user.admin}">회원 관리</a>
                         </td>
+                        <td width="120">
+                            <a href="../board/list.html" th:href="@{/board/list}" th:text="#{menu.board.admin}">회원게시판관리</a>
+                        </td>
                     </th:block>
 
                     <!-- 회원 권한을 가진 사용자인 경우 true -->
                     <th:block sec:authorize="hasRole('MEMBER)">
-
+                        <td width="120">
+                            <a href="../board/list.html" th:href="@{/board/list}" th:text="#{menu.board.member}">회원게시판</a>
+                        </td>
                     </th:block>
 
                 </th:block>
