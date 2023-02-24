@@ -53,9 +53,13 @@ public class Member {
     @JoinColumn(name = "user_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
 
-    // 권한 생성
+    // 권한 추가
     public void addAuth(MemberAuth auth) {
         authList.add(auth);
     }
 
+    // 권한 리스트 비움
+    public void clearAuthList() {
+        authList.clear();
+    }
 }

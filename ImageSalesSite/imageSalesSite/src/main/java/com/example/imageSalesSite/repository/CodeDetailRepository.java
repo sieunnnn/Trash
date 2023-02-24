@@ -15,4 +15,5 @@ public interface CodeDetailRepository extends JpaRepository<CodeDetail, CodeDeta
     // 지정된 그룹코드에 해당하는 코드 목록 조회
     @Query("SELECT cd FROM CodeDetail cd WHERE cd.groupCode = ?1")
     public List<CodeDetail> getCodeList(String groupCode);
+
 }

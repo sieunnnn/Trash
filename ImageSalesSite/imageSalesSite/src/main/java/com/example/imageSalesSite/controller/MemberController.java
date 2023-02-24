@@ -90,6 +90,7 @@ public class MemberController {
     public String register(@Validated Member member, BindingResult result, Model model, RedirectAttributes rttr) throws Exception {
 
         if(result.hasErrors()) {
+
             // 직업 코드 목록을 조회하여 뷰에 전달
             String groupCode = "A01";
             List<CodeLabelValue>jobList = codeService.getCodeList(groupCode);
@@ -109,7 +110,59 @@ public class MemberController {
         rttr.addFlashAttribute("userName", member.getUserName());
 
         return "redirect:/user/registerSuccess";
+    }
 
+    // 목록 화면
+    @GetMapping(value = "/list")
+    public void list(Model model) throws Exception {
+        model.addAttribute("list", service.list());
+    }
+
+    // 상세 화면
+    @GetMapping(value = "/read")
+    public void read(Long userNo, Model model) throws Exception {
+
+        // 작업 코드 목록을 조회하여 뷰에 전달
+        String groupCode = "A01";
+        List<CodeLabelValue>jobList = codeService.getCodeList(groupCode);
+
+        model.addAttribute("jobList", jobList);
+
+        model.addAttribute(service.read(userNo));
+    }
+
+    // 삭제 처리
+    @PostMapping(value = "/remove")
+    public String remove(Long userNo, RedirectAttributes rttr) throws Exception {
+
+        service.remove(userNo);
+
+        rttr.addFlashAttribute("msg", "SUCCESS");
+
+        return "redirect:/user/list";
+    }
+
+    // 수정 화면
+    @GetMapping(value = "/modify")
+    public void modifyForm(Long userNo, Model model) throws Exception {
+
+        String groupCode = "A01";
+        List<CodeLabelValue> jobList = codeService.getCodeList(groupCode);
+
+        model.addAttribute("joblist", jobList);
+
+        model.addAttribute(service.read(userNo));
+    }
+
+    // 수정 처리
+    @PostMapping(value = "/modify")
+    public String modify(Member member, RedirectAttributes rttr) throws Exception {
+
+        service.modify(member);
+
+        rttr.addFlashAttribute("msg", "SUCCESS");
+
+        return "redirect:/user/list";
     }
 
 }
