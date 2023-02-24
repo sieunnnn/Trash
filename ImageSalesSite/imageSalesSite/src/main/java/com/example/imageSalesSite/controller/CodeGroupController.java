@@ -3,6 +3,7 @@ package com.example.imageSalesSite.controller;
 import com.example.imageSalesSite.domain.CodeGroup;
 import com.example.imageSalesSite.service.CodeGroupService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value = "/codegroup")
+// 관리자 권한을 가진 사용자만 접근이 가능
+@PreAuthorize("hasRole('ADMIN')")
 public class CodeGroupController {
 
     private final CodeGroupService service;

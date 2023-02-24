@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/main_template">
 
@@ -63,23 +64,31 @@
 
     <div>
         <button type="submit" id="btnRegister" th:text="#{action.register}">등록</button>
-        <button type="submit" id="btnList" th:text="#{action.list}">목록</button>
+
+        <!-- 관리자 에게만 회원 목록 보기 버튼을 보여준다 -->
+        <th:block sec:authorize="hasRole('ADMIN')">
+            <button type="submit" id="btnList" th:text="#{action.list}">목록</button>
+        </th:block>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="/js/jQuery-2.1.4.min.js"></script>
-    <script language="JavaScript">
+    <script th:inline="javascript">
         $(document).ready(function () {
 
             var formObj = $("#memer");
 
-            $('#btnRegister').on("click", function () {
+            $("#btnRegister").on("click", function () {
                 formObj.submit();
             });
 
-            $('#btnList').on("click", function () {
+            // 관리자만이 회원 목록 보기 기능을 사용할 수 있다.
+            // [# th:block sec:autorize="hasRole('ADMIN')"]
+            $("#btnList").on("click", function () {
                 self.location = "list";
             });
+            // [/th:block]
 
         });
     </script>

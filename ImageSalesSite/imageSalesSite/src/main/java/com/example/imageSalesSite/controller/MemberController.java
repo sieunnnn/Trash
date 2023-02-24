@@ -5,6 +5,7 @@ import com.example.imageSalesSite.dto.CodeLabelValue;
 import com.example.imageSalesSite.service.CodeService;
 import com.example.imageSalesSite.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -114,6 +115,8 @@ public class MemberController {
 
     // 목록 화면
     @GetMapping(value = "/list")
+    // 관리자 권한을 가진 사용자만 접근이 가능
+    @PreAuthorize("hasRole('ADMIN')")
     public void list(Model model) throws Exception {
         model.addAttribute("list", service.list());
     }
@@ -133,6 +136,8 @@ public class MemberController {
 
     // 삭제 처리
     @PostMapping(value = "/remove")
+    // 관리자 권한을 가진 사용자만 접근이 가능
+    @PreAuthorize("hasRole('ADMIN')")
     public String remove(Long userNo, RedirectAttributes rttr) throws Exception {
 
         service.remove(userNo);

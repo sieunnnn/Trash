@@ -5,6 +5,7 @@ import com.example.imageSalesSite.dto.CodeLabelValue;
 import com.example.imageSalesSite.service.CodeDetailService;
 import com.example.imageSalesSite.service.CodeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value = "/codedetail")
+// 관리자 권한을 가진 사용자만 접근이 가능
+@PreAuthorize("hasRole('ADMIN')")
 public class CodeDetailController {
 
     private final CodeDetailService codeDetailService;

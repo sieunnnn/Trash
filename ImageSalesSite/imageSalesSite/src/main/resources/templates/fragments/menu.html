@@ -8,15 +8,34 @@
                 <td width="80">
                     <a href="../home.html" th:href="@{/}" th:text="#{header.home}">홈</a>
                 </td>
-                <td width="120">
-                    <a href="../codegroup/list.html" th:href="@{/codegroup/list}" th:text="#{menu.codeGroup.list}">코드 그룹 관리</a>
-                </td>
-                <td width="120">
-                    <a href="../codedetail/list.html" th:href="@{/codedetail/list}" th:text="#{menu.codeDetail.list}">코드 관리</a>
-                </td>
-                <td width="120">
-                    <a href="../user/list.html" th:href="@{/user/list}" th:text="#{menu.user.admin}">회원 관리</a>
-                </td>
+
+                <!-- 로그인을 하지 않은 경우 true -->
+                <th:block sec:authorize="!isAuthenticated()">
+
+                </th:block>
+
+                <!-- 인증된 사용자인 경우 true -->
+                <th:block sec:authorize="!isAuthenticated()">
+
+                    <!-- 관리자 권한을 가진 사용자인 경우 true -->
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <td width="120">
+                            <a href="../codegroup/list.html" th:href="@{/codegroup/list}" th:text="#{menu.codeGroup.list}">코드 그룹 관리</a>
+                        </td>
+                        <td width="120">
+                            <a href="../codedetail/list.html" th:href="@{/codedetail/list}" th:text="#{menu.codeDetail.list}">코드 관리</a>
+                        </td>
+                        <td width="120">
+                            <a href="../user/list.html" th:href="@{/user/list}" th:text="#{menu.user.admin}">회원 관리</a>
+                        </td>
+                    </th:block>
+
+                    <!-- 회원 권한을 가진 사용자인 경우 true -->
+                    <th:block sec:authorize="hasRole('MEMBER)">
+
+                    </th:block>
+
+                </th:block>
             </tr>
         </table>
     </div>

@@ -4,8 +4,10 @@ import com.example.imageSalesSite.security.CustomAccessDeniedHandler;
 import com.example.imageSalesSite.security.CustomLoginSuccessHandler;
 import com.example.imageSalesSite.security.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,7 +22,8 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import javax.sql.DataSource;
 
 @EnableWebSecurity
-// WebSecurityConfigurerAdapter 대신 WebSecurityConfiguration 사용
+// security annotaion 활성화를 위한 설정
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 데이터 소스
@@ -29,6 +32,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/user/setup", "/user/register", "/user/registerSuccess").permitAll()
+                .antMatchers("/user/**").hasRole("ADMIN")
+                .antMatchers("/codegroup/**").hasRole("ADMIN")
+                .antMatchers("/codedetail/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
+
+
         http.formLogin()
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/login")
