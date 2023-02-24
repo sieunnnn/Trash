@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/main_template">
@@ -36,6 +36,7 @@
         <th:block sec:authorize="hasRole('ADMIN')">
             <button type="submit" id="btnRemove" th:text="#{action.remove}">삭제</button>
         </th:block>
+
         <th:block sec:authorize="hasRole('MEMBER')">
         <th:block th:if="${pinfo.username eq board.writer}">
             <button type="submit" id="btnEdit" th:text="#{action.edit}">편집</button>

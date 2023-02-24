@@ -23,13 +23,13 @@ public class BoardServiceImpl  implements BoardService{
     // 상세 화면
     @Override
     public Board read(Long boardNo) throws Exception {
-        return repository.getOne(boardNo);
+        return repository.getById(boardNo);
     }
 
     // 수정 처리
     @Override
     public void modify(Board board) throws Exception {
-        Board boardEntity = repository.getOne(board.getBoardNo());
+        Board boardEntity = repository.getById(board.getBoardNo());
 
         boardEntity.setTitle(board.getTitle());
         boardEntity.setContent(board.getContent());

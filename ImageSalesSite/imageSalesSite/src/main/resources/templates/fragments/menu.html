@@ -37,7 +37,7 @@
                     </th:block>
 
                     <!-- 회원 권한을 가진 사용자인 경우 true -->
-                    <th:block sec:authorize="hasRole('MEMBER)">
+                    <th:block sec:authorize="hasRole('MEMBER')">
                         <td width="120">
                             <a href="../board/list.html" th:href="@{/board/list}" th:text="#{menu.board.member}">회원게시판</a>
                         </td>
