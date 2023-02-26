@@ -1,11 +1,13 @@
 package com.example.imageSalesSite.controller;
 
+import com.example.imageSalesSite.VO.PageRequestVO;
 import com.example.imageSalesSite.domain.Board;
 import com.example.imageSalesSite.domain.Member;
+import com.example.imageSalesSite.dto.PaginationDTO;
 import com.example.imageSalesSite.security.domain.CustomUser;
 import com.example.imageSalesSite.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -69,7 +71,7 @@ public class BoardController {
     public void list(@ModelAttribute("pgrq") PageRequestVO pageRequestVO, Model model) throws Exception {
         Page<Board> page = service.list(pageRequestVO);
 
-        model.addAllAttributes("pgntn" new PaginationDTO<Board>(page));
+        model.addAttribute("pgntn", new PaginationDTO<Board>(page));
     }
 
 //    // 상세 화면
@@ -80,7 +82,7 @@ public class BoardController {
 
     // 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
     @GetMapping(value = "/read")
-    public void read(Long boardNode, @ModelAttribute("parq") PageRequestVO pageRequestVO, Model model) throws Exception {
+    public void read(Long boardNo, @ModelAttribute("parq") PageRequestVO pageRequestVO, Model model) throws Exception {
         model.addAttribute(service.read(boardNo));
     }
 
@@ -146,7 +148,16 @@ public class BoardController {
     PageRequestVO pageRequestVO, RedirectAttributes rttr) throws Exception {
 
         if (result.hasErrors()) {
-
+            return "board/modify";
         }
+
+        service.modify(board);
+
+        rttr.addAttribute("page", pageRequestVO.getPage());
+        rttr.addAttribute("sizePerPage", pageRequestVO.getSizePerPage());
+
+        rttr.addFlashAttribute("msg", "SUCCESS");
+
+        return "redirect:/board/list";
     }
 }

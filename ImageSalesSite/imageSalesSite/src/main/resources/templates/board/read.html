@@ -15,6 +15,10 @@
     <form id="board" action="list.html" th:action="@{/board/remove}" th:object="${board}" method="POST">
         <input type="hidden" name="boardNo" th:field="*{boardNo}" />
 
+        <!-- 현재 페이지 번호, 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. -->
+        <input type="hidden" name="page" th:value="${pgrq.page}" />
+        <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
+
         <table>
             <tr>
                 <td th:text="#{board.title}">제목</td>
@@ -58,7 +62,8 @@
                 var boardNo = $("#boardNo");
                 var boardNoVal = boardNo.val();
 
-                self.location = "/board/modify?boardNo=" + boardNoVal;
+                // 페이징 관련 정보를 쿼리 파라미터로 전달한다.
+                self.location = "/board/modify[(${pgrq.toUriString()})]" + "&boardNo=" + boardNoVal;
             });
 
             $("#btnRemove").on("click", function() {
@@ -66,8 +71,9 @@
                 formObj.submit();
             });
 
+            // 페이징 관련 정보를 쿼리 파라미터로 전달한다.
             $("#btnList").on("click", function() {
-                self.location = "/board/list";
+                self.location = "/board/list[(${pgrq.toUriString()})]";
             });
 
         });
