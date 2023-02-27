@@ -51,6 +51,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/notice/list", "/notice/read").permitAll()
                 .antMatchers("/notice/**").hasRole("ADMIN")
 
+                // 상품 관리 웹 경로 보안 지정
+                .antMatchers("/item/list", "/item/read", "/item/display").permitAll()
+                .antMatchers("/item/picture").hasAnyRole("MEMBER", "ADMIN")
+                .antMatchers("/item/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.formLogin()
