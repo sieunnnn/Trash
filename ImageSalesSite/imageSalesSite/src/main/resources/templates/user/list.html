@@ -40,11 +40,11 @@
                 <td align="left" th:text="${member.userPw}">${member.userPw}</td>
                 <td align="right" th:text="${member.userName}">${member.userName}</td>
                 <td align="right" th:text="${member.job}">${member.job}</td>
-                <td align="center" th:text="${#temporals.formal(member.regDate, 'yyyy-MM-dd HH:mm')}"></td>
+                <td align="center" th:text="${#temporals.format(member.regDate, 'yyyy-MM-dd HH:mm')}"></td>
             </tr>
         </table>
 
-<!--        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="/js/jQuery-2.1.4.min.js"></script>
         <script th:inline="javascript">
 

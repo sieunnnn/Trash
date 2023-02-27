@@ -1,7 +1,6 @@
 package com.example.imageSalesSite.service;
 
 import com.example.imageSalesSite.domain.CodeDetail;
-import com.example.imageSalesSite.domain.CodeDetailld;
 import com.example.imageSalesSite.domain.CodeGroup;
 import com.example.imageSalesSite.dto.CodeLabelValue;
 import com.example.imageSalesSite.repository.CodeDetailRepository;

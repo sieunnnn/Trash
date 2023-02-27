@@ -75,6 +75,7 @@ public class MemberServiceImpl implements MemberService{
 
         // 회원 권한 수정
         memberEntity.clearAuthList();
+
         List<MemberAuth> authList = member.getAuthList();
         for(int i = 0; i < authList.size(); i++) {
             MemberAuth auth = authList.get(i);
@@ -94,20 +95,18 @@ public class MemberServiceImpl implements MemberService{
     // 목록 화면
     @Override
     public List<Member> list() throws Exception {
-
         List<Object[]> valueArrays = repository.listAllMember();
-
         List<Member> memberList = new ArrayList<Member>();
         for(Object[] valueArray : valueArrays) {
             Member member = new Member();
 
-            member.setUserNo((Long) valueArray[0]);
-            member.setUserId((String) valueArray[1]);
-            member.setUserPw((String) valueArray[2]);
-            member.setUserName((String) valueArray[3]);
-            member.setJob((String) valueArray[4]);
-            member.setCoin((int) valueArray[5]);
-            member.setRegDate((LocalDateTime) valueArray[6]);
+            member.setUserNo((Long)valueArray[0]);
+            member.setUserId((String)valueArray[1]);
+            member.setUserPw((String)valueArray[2]);
+            member.setUserName((String)valueArray[3]);
+            member.setJob((String)valueArray[4]);
+            member.setCoin((int)valueArray[5]);
+            member.setRegDate((LocalDateTime)valueArray[6]);
 
             memberList.add(member);
         }
@@ -115,4 +114,4 @@ public class MemberServiceImpl implements MemberService{
         return memberList;
     }
 
-}
+    }

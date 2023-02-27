@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Setter
 @EqualsAndHashCode(of={"gorupCode", "codeValue"})
 @ToString
-public class CodeDetailld implements Serializable {
+public class CodeDetailId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

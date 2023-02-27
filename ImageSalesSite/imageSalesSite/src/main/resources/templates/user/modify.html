@@ -31,9 +31,9 @@
             </tr>
 
             <tr>
-                <td th:text="#{user.userId}">사용자명</td>
+                <td th:text="#{user.userName}">사용자명</td>
                 <td>
-                    <input type="text" name="userId" th:field="*{userId}" readonly="readonly" />
+                    <input type="text" name="userId" th:field="*{userName}" readonly="readonly" />
                 </td>
                 <td>
                     <span class="error_message" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName 의 에러 메세지</span>
@@ -56,7 +56,7 @@
                 <td th:text="#{user.auth} + '-1'">권한 -1</td>
                 <td>
                     <select th:field="*{authList[0].auth}" disabled="disabled">
-                        <option th:value="''"th:text="'=== 선택해 주세요 ==='" />
+                        <option th:value="''" th:text="'=== 선택해 주세요 ==='" />
                         <option th:value="'ROLE_USER'" th:text="'사용자'" />
                         <option th:value="'ROLE_MEMBER'" th:text="'회원'" />
                         <option th:value="'ROLE_ADMIN'" th:text="'관리자'" />
@@ -71,7 +71,7 @@
                 <td th:text="#{user.auth} + '-2'">권한 -2</td>
                 <td>
                     <select th:field="*{authList[1].auth}" disabled="disabled">
-                        <option th:value="''"th:text="'=== 선택해 주세요 ==='" />
+                        <option th:value="''">=== 선택해 주세요 ==='"</option>
                         <option th:value="'ROLE_USER'" th:text="'사용자'" />
                         <option th:value="'ROLE_MEMBER'" th:text="'회원'" />
                         <option th:value="'ROLE_ADMIN'" th:text="'관리자'" />
@@ -86,7 +86,7 @@
                 <td th:text="#{user.auth} + '-3'">권한 -3</td>
                 <td>
                     <select th:field="*{authList[2].auth}" disabled="disabled">
-                        <option th:value="''"th:text="'=== 선택해 주세요 ==='" />
+                        <option th:value="''">=== 선택해 주세요 ===</option>
                         <option th:value="'ROLE_USER'" th:text="'사용자'" />
                         <option th:value="'ROLE_MEMBER'" th:text="'회원'" />
                         <option th:value="'ROLE_ADMIN'" th:text="'관리자'" />
@@ -103,7 +103,7 @@
 
     <div>
         <button type="submit" id="btnModify" th:text="#{action.modify}">수정</button>
-        <button type="submit" id="btn" th:text="#{action.list}">목록</button>
+        <button type="submit" id="btnList" th:text="#{action.list}">목록</button>
     </div>
 
 
@@ -113,6 +113,8 @@
         $(document).ready(function () {
 
             var formObj = $("#member");
+
+            console.log(formObj)
 
             $("#btnModify").on("click", function () {
                 formObj.submit();

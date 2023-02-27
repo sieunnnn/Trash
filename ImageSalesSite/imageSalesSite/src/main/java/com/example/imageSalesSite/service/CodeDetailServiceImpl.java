@@ -1,7 +1,7 @@
 package com.example.imageSalesSite.service;
 
 import com.example.imageSalesSite.domain.CodeDetail;
-import com.example.imageSalesSite.domain.CodeDetailld;
+import com.example.imageSalesSite.domain.CodeDetailId;
 import com.example.imageSalesSite.repository.CodeDetailRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -45,22 +45,22 @@ public class CodeDetailServiceImpl implements CodeDetailService{
     @Override
     public CodeDetail read(CodeDetail codeDetail) throws Exception {
 
-        CodeDetailld codeDetailld = new CodeDetailld();
-        codeDetailld.setGroupCode(codeDetail.getGroupCode());
-        codeDetailld.setCodeValue(codeDetail.getCodeValue());
+        CodeDetailId codeDetailId = new CodeDetailId();
+        codeDetailId.setGroupCode(codeDetail.getGroupCode());
+        codeDetailId.setCodeValue(codeDetail.getCodeValue());
 
-        return repository.getById(codeDetailld);
+        return repository.getById(codeDetailId);
     }
 
     // 수정 처리
     @Override
     public void modify(CodeDetail codeDetail) throws Exception {
 
-        CodeDetailld codeDetailld = new CodeDetailld();
-        codeDetailld.setGroupCode(codeDetail.getGroupCode());
-        codeDetailld.setCodeValue(codeDetail.getCodeValue());
+        CodeDetailId codeDetailId = new CodeDetailId();
+        codeDetailId.setGroupCode(codeDetail.getGroupCode());
+        codeDetailId.setCodeValue(codeDetail.getCodeValue());
 
-        CodeDetail codeDetailEntity = repository.getById(codeDetailld);
+        CodeDetail codeDetailEntity = repository.getById(codeDetailId);
 
         codeDetailEntity.setCodeValue(codeDetail.getCodeValue());
         codeDetailEntity.setCodeName(codeDetail.getCodeName());
@@ -73,11 +73,11 @@ public class CodeDetailServiceImpl implements CodeDetailService{
     @Override
     public void remove(CodeDetail codeDetail) throws Exception {
 
-        CodeDetailld codeDetailld = new CodeDetailld();
-        codeDetailld.setGroupCode(codeDetail.getGroupCode());
-        codeDetailld.setCodeValue(codeDetail.getCodeValue());
+        CodeDetailId codeDetailId = new CodeDetailId();
+        codeDetailId.setGroupCode(codeDetail.getGroupCode());
+        codeDetailId.setCodeValue(codeDetail.getCodeValue());
 
-        repository.deleteById(codeDetailld);
+        repository.deleteById(codeDetailId);
     }
 
 }

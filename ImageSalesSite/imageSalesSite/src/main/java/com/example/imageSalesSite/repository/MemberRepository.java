@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    // 로그인
-    List<Member> findByUserId(String userName);
+    public List<Member> findByUserId(String userId);
 
     // 모든 회원 목록 반환
     @Query("SELECT m.userNo, m.userId, m.userPw, m.userName, cd.codeName, m.coin, m.regDate "
