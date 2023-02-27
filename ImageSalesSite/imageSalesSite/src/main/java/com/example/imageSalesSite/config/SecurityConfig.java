@@ -55,6 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/item/list", "/item/read", "/item/display").permitAll()
                 .antMatchers("/item/picture").hasAnyRole("MEMBER", "ADMIN")
                 .antMatchers("/item/**").hasRole("ADMIN")
+
+                // 코인 충전 웹 경로 보안 지정
+                .antMatchers("/coin/**").hasRole("MEMBER")
                 .anyRequest().authenticated();
 
         http.formLogin()
