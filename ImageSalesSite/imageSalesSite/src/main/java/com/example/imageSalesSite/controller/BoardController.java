@@ -3,6 +3,7 @@ package com.example.imageSalesSite.controller;
 import com.example.imageSalesSite.VO.PageRequestVO;
 import com.example.imageSalesSite.domain.Board;
 import com.example.imageSalesSite.domain.Member;
+import com.example.imageSalesSite.dto.CodeLabelValue;
 import com.example.imageSalesSite.dto.PaginationDTO;
 import com.example.imageSalesSite.security.domain.CustomUser;
 import com.example.imageSalesSite.service.BoardService;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RequiredArgsConstructor
@@ -70,8 +74,20 @@ public class BoardController {
     @GetMapping(value = "/list")
     public void list(@ModelAttribute("pgrq") PageRequestVO pageRequestVO, Model model) throws Exception {
         Page<Board> page = service.list(pageRequestVO);
-
         model.addAttribute("pgntn", new PaginationDTO<Board>(page));
+
+        // 검색 유형의 코드명과 코드값을 정의한다.
+        List<CodeLabelValue> searchTypeCodeValueList = new ArrayList<CodeLabelValue>();
+        searchTypeCodeValueList.add(new CodeLabelValue("n", "---"));
+        searchTypeCodeValueList.add(new CodeLabelValue("t", "Title"));
+        searchTypeCodeValueList.add(new CodeLabelValue("c", "Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("w", "Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tc", "Title OR Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("cw", "Content OR Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tcw", "Title OR Content OR Writer"));
+
+        model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
+
     }
 
 //    // 상세 화면
@@ -107,6 +123,10 @@ public class BoardController {
 
         rttr.addFlashAttribute("page", pageRequestVO.getPage());
         rttr.addFlashAttribute("sizePerPage",pageRequestVO.getSizePerPage());
+
+        // 검색 유형과 검색어를 뷰에 전달한다.
+        rttr.addAttribute("searchType", pageRequestVO.getSearchType());
+        rttr.addAttribute("keyword", pageRequestVO.getKeyword());
 
         rttr.addFlashAttribute("msg", "SUCCESS");
 
@@ -155,6 +175,10 @@ public class BoardController {
 
         rttr.addAttribute("page", pageRequestVO.getPage());
         rttr.addAttribute("sizePerPage", pageRequestVO.getSizePerPage());
+
+        // 검색 유형과 검색어를 뷰에 전달한다.
+        rttr.addAttribute("searchType", pageRequestVO.getSearchType());
+        rttr.addAttribute("keyword", pageRequestVO.getKeyword());
 
         rttr.addFlashAttribute("msg", "SUCCESS");
 

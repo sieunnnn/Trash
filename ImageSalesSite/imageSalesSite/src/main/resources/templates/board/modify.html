@@ -19,6 +19,10 @@
         <input type="hidden" name="page" th:value="${pgrq.page}" />
         <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
 
+        <!-- 검색유형, 검색어를 숨겨진 필드 요소를 사용하여 전달한다. -->
+        <input type="hidden" name="searchType" th:value="${pgrq?.searchType}" />
+        <input type="hidden" name="keyword" th:value="${pgrq?.keyword}" />
+
         <table>
             <tr>
                 <td th:text="#{board.title}">제목</td>
@@ -65,7 +69,7 @@
 
             $("#btnList").on("click", function() {
                 // 페이징 관련 정보를 쿼리 파라미터로 전달한다.
-                self.location = "list[(${pgrq.toUriString()})]";
+                self.location = "list[(${pgrq?.toUriString()})]";
             });
 
         });

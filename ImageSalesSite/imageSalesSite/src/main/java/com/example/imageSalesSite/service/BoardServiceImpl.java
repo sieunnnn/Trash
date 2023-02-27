@@ -55,13 +55,25 @@ public class BoardServiceImpl  implements BoardService{
     // 페이징 요청 정보를 매개변수로 받아 페이징 처리를 한 게시글 목록을 반환한다.
     @Override
     public Page<Board> list(PageRequestVO pageRequestVO) throws Exception {
+//        int pageNumber = pageRequestVO.getPage() -1;
+//        int sizePerPage = pageRequestVO.getSizePerPage();
+//
+//        Pageable pageRequest = PageRequest.of(pageNumber, sizePerPage, Sort.Direction.DESC, "boardNo");
+//
+//        Page<Board> page = repository.findAll(pageRequest);
+//
+//        return page;
+
+        // 검색 유형과 검색어로 검색된 게시글을 페이지 단위로 반환한다.
+        String searchType = pageRequestVO.getSearchType();
+        String keyword = pageRequestVO.getKeyword();
+
         int pageNumber = pageRequestVO.getPage() -1;
         int sizePerPage = pageRequestVO.getSizePerPage();
 
         Pageable pageRequest = PageRequest.of(pageNumber, sizePerPage, Sort.Direction.DESC, "boardNo");
 
-        Page<Board> page = repository.findAll(pageRequest);
-
-        return page;
+        return repository.getSearchPage(searchType, keyword, pageRequest);
     }
+
 }

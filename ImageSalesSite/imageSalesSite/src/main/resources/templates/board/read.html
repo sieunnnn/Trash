@@ -16,8 +16,12 @@
         <input type="hidden" name="boardNo" th:field="*{boardNo}" />
 
         <!-- 현재 페이지 번호, 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. -->
-        <input type="hidden" name="page" th:value="${pgrq.page}" />
-        <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
+        <input type="hidden" name="page" th:value="${pgrq?.page}" />
+        <input type="hidden" name="sizePerPage" th:value="${pgrq?.sizePerPage}" />
+
+        <!-- 검색유형, 검색어를 숨겨진 필드 요소를 사용하여 전달한다. -->
+        <input type="hidden" name="searchType" th:value="${pgrq?.searchType}" />
+        <input type="hidden" name="keyword" th:value="${pgrq?.keyword}" />
 
         <table>
             <tr>
@@ -63,7 +67,7 @@
                 var boardNoVal = boardNo.val();
 
                 // 페이징 관련 정보를 쿼리 파라미터로 전달한다.
-                self.location = "/board/modify[(${pgrq.toUriString()})]" + "&boardNo=" + boardNoVal;
+                self.location = "/board/modify[(${pgrq?.toUriString()})]" + "&boardNo=" + boardNoVal;
             });
 
             $("#btnRemove").on("click", function() {
@@ -73,7 +77,7 @@
 
             // 페이징 관련 정보를 쿼리 파라미터로 전달한다.
             $("#btnList").on("click", function() {
-                self.location = "/board/list[(${pgrq.toUriString()})]";
+                self.location = "/board/list[(${pgrq?.toUriString()})]";
             });
 
         });

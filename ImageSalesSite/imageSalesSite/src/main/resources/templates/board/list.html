@@ -13,6 +13,16 @@
 <div layout:fragment="content">
     <h2 th:text="#{board.header.list}">회원게시판 목록</h2>
 
+    <!-- 검색폼을 만든다 -->
+    <form id="pgrq" action="list.html" th:action="@{|/board/list${pgrq?.toUriStringForSearchAction(1)}|}" th:object="${pgrq}" method="get">
+        <select th:field="*{searchType}">
+            <option th:each="element : ${searchTypeCodeValueList}" th:value="${element.value}" th:text="${element.label}">제목</option>
+        </select>
+
+        <input type="text" name="keyword" th:field="*{keyword}" />
+        <button id="searchBtn" th:text="#{action.search}">검색</button>
+    </form>
+
     <th:block sec:authorize="hasRole('MEMBER')">
         <a href="register.html" th:href="@{/board/register}" th:text="#{action.new}">새로만들기</a>
     </th:block>
@@ -36,7 +46,7 @@
 
             <!-- 게시글 상세보기 할 때 페이징 요청정보를 매개변수로 전달한다 -->
             <td align="left">
-                <a href="read.html" th:href="@{|/board/read${pgrq.toUriString()}&boardNo=${board.boardNo}|}" th:text="${board.title}">${board.title}</a>
+                <a href="read.html" th:href="@{|/board/read${pgrq?.toUriString()}&boardNo=${board.boardNo}|}" th:text="${board.title}">${board.title}</a>
             </td>
             <td align="right" th:text="${board.writer}">${board.writer}</td>
             <td align="center" th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}"></td>
