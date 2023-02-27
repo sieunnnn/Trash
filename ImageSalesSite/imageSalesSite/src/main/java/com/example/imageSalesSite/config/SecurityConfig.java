@@ -41,10 +41,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasRole("ADMIN")
                 .antMatchers("/codegroup/**").hasRole("ADMIN")
                 .antMatchers("/codedetail/**").hasRole("ADMIN")
+
                 // 회원 게시판 웹 경로 보안 지정
                 .antMatchers("/board/list", "/board/read").permitAll()
                 .antMatchers("/board/remove").hasAnyRole("MEMBER", "ADMIN")
                 .antMatchers("/board/**").hasRole("MEMBER")
+
+                // 공지사항 웹 경로 보안 지정
+                .antMatchers("/notice/list", "/notice/read").permitAll()
+                .antMatchers("/notice/**").hasRole("ADMIN")
+
                 .anyRequest().authenticated();
 
         http.formLogin()
