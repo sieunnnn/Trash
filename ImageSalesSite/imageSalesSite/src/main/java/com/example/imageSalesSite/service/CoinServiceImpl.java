@@ -2,15 +2,17 @@ package com.example.imageSalesSite.service;
 
 import com.example.imageSalesSite.domain.ChargeCoin;
 import com.example.imageSalesSite.domain.Member;
+import com.example.imageSalesSite.domain.PayCoin;
 import com.example.imageSalesSite.repository.ChargeCoinRepository;
 import com.example.imageSalesSite.repository.MemberRepository;
+import com.example.imageSalesSite.repository.PayCoinRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -47,12 +49,12 @@ public class CoinServiceImpl implements CoinService {
         return chargeCoinRepository.findAll(Sort.by(Sort.Direction.DESC, "historyNo"));
     }
 
-    // 사용자의 상품 구매 내역을 반환한다.
+// 사용자의 상품 구매 내역을 반환한다.
     @Override
     public List<PayCoin> listPayHistory(Long userNo) throws Exception {
         List<Object[]> valueArrays = payCoinRepository.listPayHistory(userNo);
 
-        List<PayCoin> payCoin = new ArrayList<PayCoin>();
+        List<PayCoin> payCoinList = new ArrayList<PayCoin>();
         for(Object[] valueArray : valueArrays) {
             PayCoin payCoin = new PayCoin();
 
