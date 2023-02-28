@@ -30,7 +30,7 @@
                     <input type="text" name="price" th:field="*{price}" /> 원
                 </td>
                 <td>
-                    span class="error_message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price의 에러 메시지</span>
+                    <span class="error_message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price의 에러 메시지</span>
                 </td>
             </tr>
 
