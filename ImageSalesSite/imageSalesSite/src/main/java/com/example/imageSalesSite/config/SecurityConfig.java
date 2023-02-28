@@ -64,6 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // 코인 충전 웹 경로 보안 지정
                 .antMatchers("/coin/**").hasRole("MEMBER")
+
+                // 공개 자료실 웹 경로 보안 지정
+                .antMatchers("/pds/list", "/pds/read", "/pds/getAttach/**", "/pds/downloadFile").permitAll()
+                .antMatchers("/pds/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.formLogin()
