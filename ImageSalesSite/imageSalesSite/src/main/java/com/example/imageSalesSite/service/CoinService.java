@@ -10,4 +10,7 @@ public interface CoinService {
     // 충전 내역 화면
     public Object list(Long userNo) throws Exception;
 
+    // 사용자의 상품 구매 내역을 반환한다.
+    public Object listPayHistory(Long userNo) throws Exception;
+
 }

@@ -114,4 +114,12 @@ public class MemberServiceImpl implements MemberService{
         return memberList;
     }
 
+    // 사용자 보유 코인을 반환한다.
+    @Override
+    public int getCoin(Long userNo) throws Exception {
+        Member member = repository.getById(userNo);
+
+        return member.getCoin();
+    }
+
     }

@@ -27,4 +27,7 @@ public interface MemberService {
     // 목록 화면
     public List<Member> list() throws Exception;
 
+
+    // 사용자 보유 코인을 반환한다.
+    public int getCoin(Long userNo) throws Exception;
 }

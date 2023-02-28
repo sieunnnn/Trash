@@ -1,14 +1,20 @@
 package com.example.imageSalesSite.controller;
 
 import com.example.imageSalesSite.domain.Item;
+import com.example.imageSalesSite.domain.Member;
 import com.example.imageSalesSite.prop.ShopProperties;
+import com.example.imageSalesSite.security.domain.CustomUser;
 import com.example.imageSalesSite.service.ItemService;
+import com.example.imageSalesSite.service.MemberService;
+import com.example.imageSalesSite.service.UserItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -23,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -32,6 +39,14 @@ public class ItemController {
 
     private final ItemService itemService;
     private final ShopProperties shopProperties;
+
+    // 업무로직을 처리할 서비스 객체를 필드로 선언
+    private final MemberService memberService;
+
+    private final UserItemService userItemService;
+
+    // 메시지를 처리할 MessageSource 를 필드로 선언
+    private final MessageSource messageSource;
 
     // 등록 화면
     @GetMapping("/register")
@@ -206,6 +221,32 @@ public class ItemController {
         }
 
         return null;
+    }
+
+    // 상품 구매 요청을 처리
+    @PostMapping(value = "/buy")
+    public String buy(Long itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
+        CustomUser customUser = (CustomUser) authentication.getPrincipal();
+        Member member = customUser.getMember();
+
+        Long userNo = member.getUserNo();
+
+        member.setCoin(memberService.getCoin(userNo));
+
+        Item item = itemService.read(itemId);
+
+        userItemService.register(member, item);
+
+        String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
+        rttr.addFlashAttribute("msg", message);
+
+        return "redirect:/item/success";
+    }
+
+    // 상품 구매 성공 화면을 표시
+    @GetMapping(value = "/success")
+    public String success() throws Exception {
+        return "item/success";
     }
 
 }
