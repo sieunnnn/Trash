@@ -17,7 +17,7 @@
     <h2 th:text="#{item.header.read}">상품 상세보기</h2>
 
     <!-- 구매하기 액션 지정 -->
-    <form id="item" action="list.html" th:object="${/item/buy}" th:object="${item}" method="post">
+    <form id="item" action="list.html" th:action="@{/item/buy}" th:object="${item}" method="post">
 
         <!-- 구매 대상 상품 정보 -->
         <input type="hidden" name="ItemId" th:field="*{itemId}" />
