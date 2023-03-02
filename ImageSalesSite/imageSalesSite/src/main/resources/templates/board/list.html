@@ -46,7 +46,7 @@
 
             <!-- 게시글 상세보기 할 때 페이징 요청정보를 매개변수로 전달한다 -->
             <td align="left">
-                <a href="read.html" th:href="@{|/board/read${pgrq?.toUriString()}&boardNo=${board.boardNo}|}" th:text="${board.title}">${board.title}</a>
+                <a href="read.html" th:href="@{|/board/read${pgrq.toUriString()}&boardNo=${board.boardNo}|}" th:text="${board.title}">${board.title}</a>
             </td>
             <td align="right" th:text="${board.writer}">${board.writer}</td>
             <td align="center" th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}"></td>
