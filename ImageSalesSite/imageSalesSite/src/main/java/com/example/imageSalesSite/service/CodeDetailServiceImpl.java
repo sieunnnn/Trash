@@ -11,11 +11,10 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class CodeDetailServiceImpl implements CodeDetailService{
+public class CodeDetailServiceImpl implements CodeDetailService {
 
     private final CodeDetailRepository repository;
 
-    // 등록 처리
     @Override
     public void register(CodeDetail codeDetail) throws Exception {
         String groupCode = codeDetail.getGroupCode();
@@ -35,16 +34,8 @@ public class CodeDetailServiceImpl implements CodeDetailService{
         repository.save(codeDetail);
     }
 
-    // 목록 화면
-    @Override
-    public List<CodeDetail> list() throws Exception {
-        return repository.findAll(Sort.by(Sort.Direction.ASC, "groupCode", "codeValue"));
-    }
-
-    // 상세 화면
     @Override
     public CodeDetail read(CodeDetail codeDetail) throws Exception {
-
         CodeDetailId codeDetailId = new CodeDetailId();
         codeDetailId.setGroupCode(codeDetail.getGroupCode());
         codeDetailId.setCodeValue(codeDetail.getCodeValue());
@@ -52,10 +43,8 @@ public class CodeDetailServiceImpl implements CodeDetailService{
         return repository.getById(codeDetailId);
     }
 
-    // 수정 처리
     @Override
     public void modify(CodeDetail codeDetail) throws Exception {
-
         CodeDetailId codeDetailId = new CodeDetailId();
         codeDetailId.setGroupCode(codeDetail.getGroupCode());
         codeDetailId.setCodeValue(codeDetail.getCodeValue());
@@ -66,18 +55,20 @@ public class CodeDetailServiceImpl implements CodeDetailService{
         codeDetailEntity.setCodeName(codeDetail.getCodeName());
 
         repository.save(codeDetailEntity);
-
     }
 
-    // 삭제 처리
     @Override
     public void remove(CodeDetail codeDetail) throws Exception {
-
         CodeDetailId codeDetailId = new CodeDetailId();
         codeDetailId.setGroupCode(codeDetail.getGroupCode());
         codeDetailId.setCodeValue(codeDetail.getCodeValue());
 
         repository.deleteById(codeDetailId);
+    }
+
+    @Override
+    public List<CodeDetail> list() throws Exception {
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "groupCode", "codeValue"));
     }
 
 }

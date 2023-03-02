@@ -21,17 +21,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value = "/codedetail")
-// 관리자 권한을 가진 사용자만 접근이 가능
 @PreAuthorize("hasRole('ADMIN')")
 public class CodeDetailController {
 
     private final CodeDetailService codeDetailService;
+
     private final CodeService codeService;
 
-    // 등록 화면
     @GetMapping(value = "/register")
     public void registerForm(Model model) throws Exception {
-
         CodeDetail codeDetail = new CodeDetail();
         model.addAttribute(codeDetail);
 
@@ -39,73 +37,50 @@ public class CodeDetailController {
         model.addAttribute("groupCodeList", groupCodeList);
     }
 
-    // 등록 처리
     @PostMapping(value = "/register")
-    public String register(@Validated CodeDetail codeDetail, BindingResult result, RedirectAttributes rttr, Model model) throws Exception {
-        if(result.hasErrors()) {
-            List<CodeLabelValue> groupCodeList = codeService.getGroupCodeList();
-            model.addAttribute("groupCodeList", groupCodeList);
-
-            return "codedetail/register";
-        }
-
+    public String register(CodeDetail codeDetail, RedirectAttributes rttr) throws Exception {
         codeDetailService.register(codeDetail);
 
         rttr.addFlashAttribute("msg", "SUCCESS");
         return "redirect:/codedetail/list";
     }
 
-    // 목록 화면
     @GetMapping(value = "/list")
     public void list(Model model) throws Exception {
         model.addAttribute("list", codeDetailService.list());
     }
 
-    // 상세 화면
     @GetMapping(value = "/read")
     public void read(CodeDetail codeDetail, Model model) throws Exception {
-
         model.addAttribute(codeDetailService.read(codeDetail));
 
         List<CodeLabelValue> groupCodeList = codeService.getGroupCodeList();
         model.addAttribute("groupCodeList", groupCodeList);
     }
 
-    // 수정 화면
-    @GetMapping(value = "/modify")
-    public void modifyForm(CodeDetail codeDetail, Model model) throws Exception {
-
-        model.addAttribute(codeDetailService.read(codeDetail));
-
-        List<CodeLabelValue> groupCodeList = codeService.getGroupCodeList();
-        model.addAttribute("groupCodeList", groupCodeList);
-    }
-
-    // 수정 처리
-    @PostMapping(value = "/modify")
-    public String modify(@Validated CodeDetail codeDetail, BindingResult result, RedirectAttributes rttr, Model model) throws Exception {
-
-        if(result.hasErrors()) {
-            List<CodeLabelValue> groupCodeList = codeService.getGroupCodeList();
-            model.addAttribute("groupCodeList", groupCodeList);
-
-            return "codedetail/modify";
-        }
-
-        codeDetailService.modify(codeDetail);
-
-        rttr.addFlashAttribute("msg", "SUCCESS");
-
-        return "redirect:/codedetail/list";
-    }
-
-    // 삭제 처리
     @PostMapping(value = "/remove")
     public String remove(CodeDetail codeDetail, RedirectAttributes rttr) throws Exception {
-
         codeDetailService.remove(codeDetail);
+
         rttr.addFlashAttribute("msg", "SUCCESS");
 
         return "redirect:/codedetail/list";
     }
+
+    @GetMapping(value = "/modify")
+    public void modifyForm(CodeDetail codeDetail, Model model) throws Exception {
+        model.addAttribute(codeDetailService.read(codeDetail));
+
+        List<CodeLabelValue> groupCodeList = codeService.getGroupCodeList();
+        model.addAttribute("groupCodeList", groupCodeList);
+    }
+
+    @PostMapping(value = "/modify")
+    public String modify(CodeDetail codeDetail, RedirectAttributes rttr) throws Exception {
+        codeDetailService.modify(codeDetail);
+        rttr.addFlashAttribute("msg", "SUCCESS");
+
+        return "redirect:/codedetail/list";
+    }
+
 }
