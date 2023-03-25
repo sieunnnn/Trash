@@ -11,8 +11,10 @@ public class PROB10926 {
      */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String id = br.readLine();
+        StringBuilder sb = new StringBuilder();
 
-        System.out.print(id + "??!");
+        sb.append(br.readLine()).append("??!");
+
+        System.out.println(sb);
     }
 }
