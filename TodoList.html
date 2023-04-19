@@ -43,8 +43,25 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="todo">
+                <input type="text" id="todo" placeholder="오늘의 할 일을 적고 엔터를 눌러 주세요.">
                 <div class="wrapper__todoList"></div>
+            </div>
+        </div>
+
+        <!-- memo modal -->
+        <div class="modal__memo" style="display: none">
+            <div class="wrapper__memo">
+                <div class="wrapper__title">
+                    <div class="title">
+                        <div class="txt__title">메모장</div>
+                        <div class="memo__close">
+                            <img style="width: 16px; height: 14px" src="img/Close.png">
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="memoTitle" style="margin-bottom: 5px" placeholder="타이틀을 적고 Tab을 눌러주세요">
+                <textarea id="memo" style="resize: none; height: 40px; margin-top: 0; padding-top: 10px" placeholder="메모를 적고 엔터를 눌러 주세요."></textarea>
+                <div class="wrapper__memoList"></div>
             </div>
         </div>
 
@@ -69,7 +86,7 @@
                 <button id="todoBtn">
                     <img style="width: 16px; height: 16px" src="img/s_todo.png">
                 </button>
-                <button>
+                <button id="memoBtn">
                     <img style="width: 16px; height: 16px" src="img/s_memo.png">
                 </button>
                 <button>
@@ -90,6 +107,11 @@
             <div class="wrapper__open__todo" style="display: none">
                 <img style="width: 14px; height: 14px; margin: 0 7px 0 5px" src="img/s_todo.png">
                 <div class="txt__app">오늘의 할 일</div>
+            </div>
+
+            <div class="wrapper__open__memo" style="display: none">
+                <img style="width: 14px; height: 14px; margin: 0 7px 0 5px" src="img/s_memo.png">
+                <div class="txt__app">메모장</div>
             </div>
 
             <!-- 얇은 divider -->
