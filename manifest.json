@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "TodoList",
-  "description": "This is awesome todoList",
+  "description": "윈도우 98 의 감성을 입힌 투두리스트와 메모장 입니다!",
   "version": "1.0.0",
 
   "browser_action": {

@@ -163,7 +163,7 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    width: 160px;
+    width: 153px;
     height: 23px;
 
     /* Window Content/Base Grey 3 */
@@ -188,13 +188,20 @@ body {
     flex-direction: row;
     align-items: center;
 
-    width: 79px;
+    position: fixed;
+    right: 2px;
+
+    width: auto;
     height: 23px;
+
+
 
     /* Window Content/Base Grey 2 */
 
     background: #C0C0C0;
     box-shadow: inset -1px -1px 0px #DFDFDF, inset 1px 1px 0px #808080;
+
+    font-family: 'Galmuri11';
 }
 
 
@@ -423,6 +430,11 @@ body {
     font-family: 'Galmuri9';
     font-weight: bolder;
     font-size: 12px;
+}
+
+.wrapper__memoList {
+
+    overflow-y: scroll;
 }
 
 .memo__content {

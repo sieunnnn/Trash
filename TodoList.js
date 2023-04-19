@@ -287,3 +287,31 @@ init();
     }
 
     init_memo();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+let notion = document.querySelector('.notion__btn');
+
+notion.addEventListener('click', () => {
+
+    window.open('https://sieun96.notion.site/chrome-Extension-91b7b3adafa54d4596a59253fdc7cc04');
+})
+
+let gitHub = document.querySelector('.github__btn');
+
+gitHub.addEventListener('click', () => {
+
+    window.open('https://github.com/sieunnnn/chrome-extension');
+})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let timeBox = document.querySelector('#clock');
+
+let time = new Date();
+
+let now = time.toLocaleTimeString();
+console.log(now);
+
+timeBox.innerHTML = now;
