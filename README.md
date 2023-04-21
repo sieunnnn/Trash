@@ -43,6 +43,33 @@
 
 <br>
 
+> ### **이슈** 
+
+<details>
+<summary> 
+	<code><b>Ver.23.04</b></code> <b><i>투두리스트/메모장</b> 첫번째 버전</i>
+</summary>
+
+<br>
+<code><b>투두리스트</b></code>
+<li> 투두리스트 완료 시 버튼을 클릭하면 isClear 의 값이 true 로 변경되도록 하였으나, 이 값이 저장되지 않음<br>
+<li> 값이 저장되지 않으니 바뀐 버튼 모양과 line-through 이 유지 되지 않음<br>
+
+<br>
+
+<code><b>메모</b></code>
+<li>새로운 메모가 생성될 때, hr 에 margin 을 두지 않아 끝부분이 이상함,,<br>
+
+<br>
+
+</details>
+
+<br>
+
+<hr>
+
+<br>
+
 > ### **회고**
 >
 
