@@ -1,21 +1,17 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PROB09 {
+public class PROB01 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = Integer.parseInt(br.readLine());
+        String str = br.readLine();
 
-        if (n%2 == 0) {
-            System.out.println(n + " is even");
-        } else {
-            System.out.println(n + " is odd");
-        }
+        System.out.println(str);
     }
 }

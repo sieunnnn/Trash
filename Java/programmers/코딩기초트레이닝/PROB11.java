@@ -1,29 +1,27 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
-public class PROB13 {
+public class PROB11 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String [] arr = br.readLine().split("");
+        String my_string = br.readLine();
+        int k = Integer.parseInt(br.readLine());
 
-        System.out.println(Arrays.toString(arr));
-
-        System.out.println(solution(arr));
+        System.out.println(solution(my_string, k));
     }
 
-    public static String solution (String[] arr) {
+    public static String solution(String my_string, int k) {
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
+        for(int i = 0; i <k; i ++) {
+            sb.append(my_string);
         }
 
         return sb.toString();

@@ -1,4 +1,4 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;

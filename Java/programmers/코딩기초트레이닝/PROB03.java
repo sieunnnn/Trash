@@ -1,21 +1,25 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class PROB02 {
+public class PROB03 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
+        String str = st.nextToken();
+        int n = Integer.parseInt(st.nextToken());
 
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
+        for (int i = 0; i < n; i++) {
+            sb.append(str);
+        }
+
+        System.out.println(sb);
     }
 }

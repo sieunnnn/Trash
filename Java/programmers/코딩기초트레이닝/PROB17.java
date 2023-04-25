@@ -1,10 +1,10 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PROB14 {
+public class PROB17 {
 
     public static void main(String[] args) throws IOException {
 
@@ -18,17 +18,15 @@ public class PROB14 {
 
     public static int solution(int a, int b) {
 
-        String aToStr = String.valueOf(a);
-        String bToStr = String.valueOf(b);
+        int aAndB = Integer.parseInt(String.valueOf(a) + String.valueOf(b));
+        int c = 2 * a * b;
 
-        int aAndB = Integer.parseInt(aToStr + bToStr);
-        int bAndA = Integer.parseInt(bToStr + aToStr);
-
-        if (aAndB > bAndA || aAndB == bAndA) {
+        if (aAndB > c || aAndB == c) {
             return aAndB;
 
         } else {
-            return bAndA;
+            return c;
+
         }
     }
 }

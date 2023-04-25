@@ -1,17 +1,23 @@
-package programmers;
+package programmers.코딩기초트레이닝;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PROB01 {
+public class PROB08 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         String str = br.readLine();
 
-        System.out.println(str);
+        for (int i = 0; i < str.length(); i++) {
+
+            sb.append(str.charAt(i)).append("\n");
+        }
+
+        System.out.println(sb);
     }
 }
