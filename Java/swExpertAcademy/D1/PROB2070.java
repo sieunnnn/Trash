@@ -1,4 +1,4 @@
-package src.swExpertAcademy;
+package SWExpertAcademy.D1;
 
 import java.io.*;
 import java.util.StringTokenizer;
