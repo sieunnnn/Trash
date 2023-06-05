@@ -12,6 +12,26 @@ public class PROB25 {
     }
 
     public static String solution(String s) {
+        StringBuilder sb = new StringBuilder();
+        String[] str = s.split("");
+        int cnt = 0;
 
+        Arrays.sort(str);
+
+        for (int i = 0; i < str.length; i++) {
+            cnt = 0;
+
+            for (int j = 0; j < str.length; j++) {
+                if (str[i].equals(str[j])) {
+                    cnt++;
+                }
+            }
+
+            if (cnt == 1) {
+                sb.append(str[i]);
+            }
+        }
+
+        return sb.toString();
     }
 }
