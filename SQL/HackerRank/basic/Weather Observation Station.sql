@@ -1,0 +1,128 @@
+
+--Weather Observation Station 1
+SELECT CITY, STATE
+FROM STATION;
+
+--Weather Observation Station 2
+SELECT ROUND(SUM(LAT_N), 2), ROUND(SUM(LONG_W), 2)
+FROM STATION;
+
+--Weather Observation Station 3
+SELECT DISTINCT CITY
+FROM STATION
+WHERE ID % 2 = 0;
+
+--Weather Observation Station 4
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY)
+FROM STATION;
+
+--Weather Observation Station 5
+--Weather Observation Station 6
+SELECT CITY
+FROM STATION
+WHERE CITY LIKE 'A%'
+    OR CITY LIKE 'E%'
+    OR CITY LIKE 'I%'
+    OR CITY LIKE 'O%'
+    OR CITY LIKE 'U%';
+
+--Weather Observation Station 7
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE CITY LIKE '%A'
+    OR CITY LIKE '%E'
+    OR CITY LIKE '%I'
+    OR CITY LIKE '%O'
+    OR CITY LIKE '%U';
+
+--Weather Observation Station 8
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE (
+    CITY LIKE 'A%'
+    OR CITY LIKE 'E%'
+    OR CITY LIKE 'I%'
+    OR CITY LIKE 'O%'
+    OR CITY LIKE 'U%'
+    ) AND (
+    CITY LIKE '%A'
+    OR CITY LIKE '%E'
+    OR CITY LIKE '%I'
+    OR CITY LIKE '%O'
+    OR CITY LIKE '%U'
+    );
+
+--Weather Observation Station 9
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE CITY NOT LIKE 'A%'
+    AND CITY NOT LIKE 'E%'
+    AND CITY NOT LIKE 'I%'
+    AND CITY NOT LIKE 'O%'
+    AND CITY NOT LIKE 'U%';
+
+--Weather Observation Station 10
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE CITY NOT LIKE '%A'
+    AND CITY NOT LIKE '%E'
+    AND CITY NOT LIKE '%I'
+    AND CITY NOT LIKE '%O'
+    AND CITY NOT LIKE '%U';
+
+--Weather Observation Station 11
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE LEFT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
+	OR RIGHT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U');
+
+--Weather Observation Station 12
+SELECT DISTINCT(CITY)
+FROM STATION
+WHERE LEFT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
+	AND RIGHT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U');
+
+--Weather Observation Station 13
+SELECT ROUND(SUM(LAT_N), 2), ROUND(SUM(LONG_W), 2)
+FROM STATION;
+
+--Weather Observation Station 14
+SELECT ROUND(LAT_N, 4) AS MAX_LAT_N
+FROM STATION
+WHERE LAT_N < 137.2345
+GROUP BY MAX_LAT_N
+ORDER BY MAX_LAT_N DESC LIMIT 1;
+
+--Weather Observation Station 15
+SELECT ROUND(LONG_W, 4)
+FROM STATION
+WHERE LAT_N < 137.2345
+ORDER BY LAT_N DESC LIMIT 1;
+
+--Weather Observation Station 16
+SELECT ROUND(LAT_N, 4)
+FROM STATION
+WHERE LAT_N > 38.7780
+ORDER BY LAT_N ASC LIMIT 1;
+
+--Weather Observation Station 17
+SELECT ROUND(LONG_W, 4)
+FROM STATION
+WHERE LAT_N > 38.7780
+ORDER BY LAT_N LIMIT 1;
+
+--Weather Observation Station 18
+SELECT ROUND(ABS(MIN(LAT_N) - MAX(LAT_N)) + ABS(MIN(LONG_W) - MAX(LONG_W)), 4)
+FROM STATION;
+
+--Weather Observation Station 19
+SELECT ROUND(SQRT(POW(ABS(MIN(LAT_N) - MAX(LAT_N)), 2) + POW(ABS(MIN(LONG_W) - MAX(LONG_W)), 2)), 4)
+FROM STATION;
+
+--Weather Observation Station 20
+SELECT ROUND(LAT_N, 4)
+FROM (
+	SELECT LAT_N, PERCENT_RANK() OVER (ORDER BY LAT_N ASC) P
+	FROM STATION
+	) MEDIAN
+WHERE P = 0.5;
