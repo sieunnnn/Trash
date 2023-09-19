@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyFirstTodoList</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+<!--    todoList 에 text 형식으로 값을 넣고 submit 을 누르면 Todoo 값을 post 형식으로 /addTodo 에 넣어주겠다 라는 뜻이다.-->
+    <form method="post" action="/addTodo">
+        <input type="text" name="todoList" />
+        <input type="submit" value="Add Todo" />
+    </form>
+    <h1>
+        <url>
+            <li th:each="todo : ${todo}">
+                <span th:text="${todo.todo}"></span>
+            </li>
+        </url>
+    </h1>
+</body>
+</html>
